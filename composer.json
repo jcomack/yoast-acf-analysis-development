@@ -1,0 +1,46 @@
+{
+  "name": "kraftner/yoast-acf-analysis-development",
+  "description": "Site initialization for yoast-acf-analysis.vvv.dev in VVV ",
+  "type": "project",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Thomas Kräftner",
+      "email": "thomas@kraftner.com",
+      "homepage": "http://kraftner.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/kraftner/yoast-acf-analysis-development/issues",
+    "source": "https://github.com/kraftner/yoast-acf-analysis-development"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/yoast/yoast-acf-analysis"
+    },
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "wecodemore/wpstarter": "~2.0",
+    "wpackagist-plugin/advanced-custom-fields": "^4.4",
+    "wpackagist-plugin/wordpress-seo": "^4.7",
+    "yoast/yoast-acf-analysis": "dev-features/acf-5"
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "post-install-cmd": "WCM\\WPStarter\\Setup::run",
+    "post-update-cmd": "WCM\\WPStarter\\Setup::run"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp"
+  }
+}

@@ -13,15 +13,14 @@ touch ${VVV_PATH_TO_SITE}/log/access.log
 
 cd ${VVV_PATH_TO_SITE}
 
+noroot composer install
+
+cd ${VVV_PATH_TO_SITE}/wp-content/plugins/yoast-acf-analysis
+noroot composer install
+noroot npm install
+
 if [[ ! -d "${VVV_PATH_TO_SITE}/wp" ]]; then
-  noroot composer install
-
-  cd ${VVV_PATH_TO_SITE}/wp-content/plugins/yoast-acf-analysis
-  noroot composer install
-  noroot npm install
-
   cp ${VVV_PATH_TO_SITE}/provision/.env.js ${VVV_PATH_TO_SITE}/wp-content/plugins/yoast-acf-analysis/tests/js/system/.env.js
-
 fi
 
 if ! $(noroot wp core is-installed); then

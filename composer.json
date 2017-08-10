@@ -30,7 +30,7 @@
   "require": {
     "wecodemore/wpstarter": "~2.0",
     "wpackagist-plugin/advanced-custom-fields": "^4.4",
-    "wpackagist-plugin/wordpress-seo": "^4.7",
+    "wpackagist-plugin/wordpress-seo": "^5.2",
     "yoast/yoast-acf-analysis": "dev-features/acf-5"
   },
   "config": {

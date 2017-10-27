@@ -32,13 +32,11 @@ If you want to auto-configure your VVV machine with those add the following to y
         - chrome
         - xvfb
     utility-sources:
-      yoast-acf-analysis-development-utilities: https://github.com/kraftner/yoast-acf-analysis-development-tools.git
- 
+      yoast-acf-analysis-development-utilities: https://github.com/kraftner/yoast-acf-analysis-development-utilities.git
+
 After that to run the tests for ACF 4 run `npm run test-acf4` inside the plugin folder.
- 
+
 To run the tests for ACF 5 you first need to install ACF 5 as we cannot do this automatically as it isn't a free plugin.
 After you've done that you can simply run `npm run test-acf5pro`.
 
 If you do not want to run the browser tests with chrome, headless, inside your VVV machine you'll need to change some of `nightwatch.json`, `nightwatch.conf.example.js` and `env.js`. Consult the corresponding documentation on how to do that.
- 
- 

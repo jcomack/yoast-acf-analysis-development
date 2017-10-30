@@ -28,7 +28,6 @@
     }
   ],
   "require": {
-    "wecodemore/wpstarter": "~2.0",
     "wpackagist-plugin/advanced-custom-fields": "^4.4",
     "wpackagist-plugin/wordpress-seo": "^5.3",
     "yoast/yoast-acf-analysis": "dev-develop"
@@ -37,10 +36,11 @@
     "optimize-autoloader": true
   },
   "scripts": {
-    "post-install-cmd": "WCM\\WPStarter\\Setup::run",
-    "post-update-cmd": "WCM\\WPStarter\\Setup::run"
   },
   "extra": {
-    "wordpress-install-dir": "wp"
+    "installer-paths": {
+      "public_html/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+    },
+    "wordpress-install-dir": "public_html"
   }
 }

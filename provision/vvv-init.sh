@@ -50,6 +50,9 @@ if ! $(noroot wp core is-installed); then
   # This is needed because the test relies on at least one attachment existing
   noroot wp media import https://s.w.org/about/images/logos/wordpress-logo-notext-rgb.png
 
+  cd ${VVV_PATH_TO_SITE}
+  noroot composer install
+
   cd ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis
 
   noroot composer install

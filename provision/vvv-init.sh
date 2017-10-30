@@ -45,20 +45,26 @@ if ! $(noroot wp core is-installed); then
   fi
 
   noroot wp core ${INSTALL_COMMAND} --url="${DOMAIN}" --quiet --title="${SITE_TITLE}" --admin_name=admin --admin_email="admin@local.test" --admin_password="password" --skip-email
-  noroot wp plugin activate --all
 
   # This is needed because the test relies on at least one attachment existing
   noroot wp media import https://s.w.org/about/images/logos/wordpress-logo-notext-rgb.png
 
+  echo "Installing necessary plugins..."
   cd ${VVV_PATH_TO_SITE}
   noroot composer install
+  echo "Installing necessary plugins complete"
 
   cd ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis
 
+  echo "Installing Yoast ACF Analysis dependencies..."
   noroot composer install
   noroot npm install
+  echo "Installing dependencies complete"
 
   cp ${VVV_PATH_TO_SITE}/provision/.env.js ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/.env.js
+
+  noroot wp plugin activate --all
+
 else
   echo "Updating WordPress Stable..."
   cd ${VVV_PATH_TO_SITE}/public_html

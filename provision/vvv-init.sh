@@ -33,6 +33,9 @@ define( 'WP_DEBUG', true );
 PHP
 fi
 
+echo "Is Core installed?"
+echo $(noroot wp core is-installed)
+
 if ! $(noroot wp core is-installed); then
   echo "Installing WordPress Stable..."
 

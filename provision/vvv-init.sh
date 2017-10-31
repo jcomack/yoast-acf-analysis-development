@@ -67,7 +67,7 @@ if ! $(noroot wp core is-installed); then
   cp ${VVV_PATH_TO_SITE}/provision/.env.js ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/.env.js
   cp ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.example.js ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.js
 
-  sed -i "s#{{DOMAIN}}#${DOMAINS}#" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.js"
+  sed -i "s#{{DOMAIN}}#http://${DOMAINS}#" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.js"
   echo "Configuring complete"
 
   noroot wp plugin activate --all

@@ -54,12 +54,12 @@ if ! $(noroot wp core is-installed); then
 
   echo "Installing necessary plugins..."
   cd ${VVV_PATH_TO_SITE}
-  noroot composer install
+  noroot composer install -q
   echo "Installing necessary plugins complete"
 
   echo "Installing Yoast ACF Analysis dependencies..."
   cd ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis
-  noroot composer install
+  noroot composer install -q
   noroot npm install
   echo "Installing dependencies complete"
 

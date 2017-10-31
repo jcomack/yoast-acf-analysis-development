@@ -24,6 +24,7 @@ touch ${VVV_PATH_TO_SITE}/log/access.log
 if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-load.php" ]]; then
     echo "Downloading WordPress..."
 	noroot wp core download --version="${WP_VERSION}"
+    echo "Downloading WordPress complete"
 fi
 
 if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-config.php" ]]; then
@@ -31,10 +32,8 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-config.php" ]]; then
   noroot wp core config --dbname="${DB_NAME}" --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
 define( 'WP_DEBUG', true );
 PHP
+  echo "Configuring WordPress complete"
 fi
-
-echo "Is Core installed?"
-echo $(noroot wp core is-installed)
 
 if ! $(noroot wp core is-installed); then
   echo "Installing WordPress Stable..."
@@ -51,20 +50,25 @@ if ! $(noroot wp core is-installed); then
 
   # This is needed because the test relies on at least one attachment existing
   noroot wp media import https://s.w.org/about/images/logos/wordpress-logo-notext-rgb.png
+  echo "WordPress installation complete"
 
   echo "Installing necessary plugins..."
   cd ${VVV_PATH_TO_SITE}
   noroot composer install
   echo "Installing necessary plugins complete"
 
-  cd ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis
-
   echo "Installing Yoast ACF Analysis dependencies..."
+  cd ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis
   noroot composer install
   noroot npm install
   echo "Installing dependencies complete"
 
+  echo "Configuring Yoast ACF Analysis..."
   cp ${VVV_PATH_TO_SITE}/provision/.env.js ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/.env.js
+  cp ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.example.js ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.js
+
+  sed -i "s#{{DOMAIN}}#${DOMAINS}#" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/nightwatch.conf.js"
+  echo "Configuring complete"
 
   noroot wp plugin activate --all
 else

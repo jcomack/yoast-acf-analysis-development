@@ -60,8 +60,11 @@ if ! $(noroot wp core is-installed); then
   echo "Installing Yoast ACF Analysis dependencies..."
   cd ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis
   noroot composer install -q
-  noroot yarn install
   echo "Installing dependencies complete"
+
+  echo "Installing Node dependencies"
+  noroot npm install
+  echo "Installing Node dependencies complete"
 
   echo "Configuring Yoast ACF Analysis..."
   cp ${VVV_PATH_TO_SITE}/provision/.env.js ${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/yoast-acf-analysis/tests/js/system/.env.js

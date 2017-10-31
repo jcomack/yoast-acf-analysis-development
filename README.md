@@ -6,7 +6,7 @@ This repo is to be used to set up a development site with [Varying Vagrant Vagra
 
 All you need to do is add this section to the `sites` section of your `vvv-custom.yml`
 
-    yoast-acf-analysis-development:
+    yoast-acf:
         repo: https://github.com/kraftner/yoast-acf-analysis-development.git
         hosts:
             - yoast-acf.dev

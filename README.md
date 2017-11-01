@@ -9,9 +9,9 @@ All you need to do is add this section to the `sites` section of your `vvv-custo
     yoast-acf:
         repo: https://github.com/kraftner/yoast-acf-analysis-development.git
         hosts:
-            - yoast-acf.dev
+            - acf-content-analysis-for-yoast-seo.test
 
-**Note that you can change `yoast-acf.dev` to any other name, if that's what you prefer.**
+**Note that you can change `acf-content-analysis-for-yoast-seo.test` to any other name, if that's what you prefer.**
 
 If you do not want to provision the default sites that come with VVV make sure to *only* have this in the `site` section.
 
@@ -40,10 +40,10 @@ If you want to auto-configure your VVV machine with those add the following to y
 
 After that to run the tests for ACF 4 run `npm run test-acf4` inside the plugin folder.
 
-To run tests for ACF 5 you first need to install ACF 5 manually, as we cannot do this automatically due to it not being a free plugin.
-After you've installed ACF 5, you can simply run `npm run test-acf5pro`.
+To run tests for ACF 5 Pro you first need to install ACF 5 Pro manually, as we cannot do this automatically due to it not being a free plugin.
+After you've installed ACF 5 Pro, you can simply run `npm run test-acf5pro`.
 
 **Note:**
-If you do not want to run the browser tests with Chrome and/or in headless mode, you'll need to change `nightwatch.json`, `nightwatch.conf.example.js` and `env.js` in your virtual machine. 
+If you do not want to run the browser tests with Chrome and/or in headless mode, you'll need to make changes to `nightwatch.json`, `nightwatch.conf.example.js` or `env.js` in your virtual machine. 
 
-Consult the corresponding documentation on how to do that.
+Consult the [corresponding documentation](http://nightwatchjs.org/gettingstarted/#settings-file) on how to do that.
